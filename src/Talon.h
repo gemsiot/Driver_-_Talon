@@ -16,15 +16,15 @@ class Talon: public Sensor
 			return 0;
 		};
 		int disableDataAll(){
-			// for(int i = 0; i < 4; i++) {
-			// 	enableData(i, false);
-			// }
+			for(int i = 1; i <= 4; i++) {
+				enableData(i, false);
+			}
 			return 0;
 		};
 		int disablePowerAll(){
-			// for(int i = 0; i < numPorts; i++) {
-			// 	enablePower(i, false);
-			// }
+			for(int i = 1; i <= 4; i++) {
+				enablePower(i, false);
+			}
 			return 0;
 		};
 		// uint8_t getPort() {
