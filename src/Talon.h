@@ -8,7 +8,8 @@ class Talon: public Sensor
 	public:
 		// Talon();
 		virtual String begin(time_t time, bool &criticalFault, bool &fault);
-		int restart();
+		virtual int restart();
+		virtual bool hasReset();
 		virtual int enableData(uint8_t Port, bool state){
 			return 0;
 		};
