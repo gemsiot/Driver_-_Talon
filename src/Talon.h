@@ -49,6 +49,7 @@ class Talon: public Sensor
 			return 0; //DEBUG!
 		};
 		uint8_t talonInterface = 0;
+		bool keepPowered = false; ///<Set if there is a sensor on the Talon which should stay powered
 	protected:
 		// const uint32_t TALON_PORT_RANGE_ERROR = 0x90010200; //FIX! 
 		// uint8_t sensorInterface = BusType::NONE;
