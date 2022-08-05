@@ -51,6 +51,7 @@ class Talon: public Sensor
 		uint8_t talonInterface = 0;
 		bool keepPowered = false; ///<Set if there is a sensor on the Talon which should stay powered
 	protected:
+		const uint32_t TALON_MISSING = 0xEF000000;
 		// const uint32_t TALON_PORT_RANGE_ERROR = 0x90010200; //FIX! 
 		// uint8_t sensorInterface = BusType::NONE;
 		// uint8_t talonPort = 255; //Used to keep track of which port the Talon is connected to on Kestrel
