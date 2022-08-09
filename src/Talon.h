@@ -6,10 +6,12 @@
 class Talon: public Sensor
 {
 	public:
-		// Talon();
-		virtual String begin(time_t time, bool &criticalFault, bool &fault);
-		virtual int restart();
-		virtual bool hasReset();
+		// Talon(uint8_t port);
+		// static bool isPresent();
+		// static constexpr const char* CLASS_NAME;
+		virtual String begin(time_t time, bool &criticalFault, bool &fault) = 0;
+		virtual int restart() = 0;
+		virtual bool hasReset() = 0;
 		virtual int enableData(uint8_t Port, bool state){
 			return 0;
 		};
@@ -43,7 +45,6 @@ class Talon: public Sensor
 			
 		// }
 		// // virtual void setPort(uint8_t port_);
-		// virtual bool isPresent();
 	// protected:
 		virtual uint8_t getNumPorts() {
 			return 0; //DEBUG!
@@ -58,6 +59,27 @@ class Talon: public Sensor
 		// virtual uint8_t getPort();
 		// virtual void setPort(uint8_t port);
 
+};
+
+struct TalonFactory {
+	bool (*isPresent)();
+	Talon* (*create)(uint8_t port);
+	const char* name;
+
+	template <typename TalonType>
+	static Talon* CreateTalon(uint8_t port) {
+		// If you see errors here, your talon is lacking a constructor accepting (uint8_t port)
+		return new TalonType(port);
+	}
+	template <typename TalonType>
+	static constexpr TalonFactory Create() {
+		// If you see errors here, your talon is lacking an isPresent(uint8_t port)
+		bool (*isPresent)() = TalonType::isPresent;
+		// If you see errors here, your talon is lacking a constexpr static const char* CLASS_NAME;
+		const char* name = TalonType::CLASS_NAME;
+		Talon* (*create)(uint8_t port) = CreateTalon<TalonType>;
+		return {isPresent, create, name};
+	}
 };
 
 #endif
