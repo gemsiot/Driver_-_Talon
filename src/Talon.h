@@ -56,6 +56,11 @@ class Talon: public Sensor
 		const uint32_t TALON_MISSING = 0xEF000000;
 		const uint32_t CSA_READ_FAIL = 0x10130000; ///<Attempt for Talon to read CSA for power test but fail
 		const uint32_t SENSOR_POWER_INIT_FAIL = 0x20040000; ///<Power to a sensor port failed to initialize 
+		const uint32_t TALON_POWER_FAIL_EXCESS = 0x20060000; ///<Power to the Talon exceeded max during the init process
+		const uint32_t SENSOR_POWER_FAIL = 0x20010000; //(low 2 bits are which port)
+		const uint32_t SENSOR_POWER_FAIL_PERSISTENT = 0x20010100; //(low 2 bits are which port)
+		const uint32_t SENSOR_POWER_WARNING = 0xF0170000; //(low 2 bits are which port) (1 = Exceed on rising)
+		const uint32_t TALON_EEPROM_READ_FAIL = 0x10090000; ///<Report failure to read from Talon EEPROM 
 		// const uint32_t TALON_PORT_RANGE_ERROR = 0x90010200; //FIX! 
 		// uint8_t sensorInterface = BusType::NONE;
 		// uint8_t talonPort = 255; //Used to keep track of which port the Talon is connected to on Kestrel
