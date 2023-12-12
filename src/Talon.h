@@ -63,6 +63,10 @@ class Talon: public Sensor
 		const uint32_t SENSOR_POWER_FAIL_PERSISTENT = 0x20010100; //(low 2 bits are which port)
 		const uint32_t SENSOR_POWER_WARNING = 0xF0170000; //(low 2 bits are which port) (1 = Exceed on rising)
 		const uint32_t TALON_EEPROM_READ_FAIL = 0x10090000; ///<Report failure to read from Talon EEPROM 
+		const uint32_t SENSE_ADC_INIT_FAIL = 0x10060000; ///<Error in initalizing the port sense ADC (MCP3421)
+		const uint32_t SENSOR_PORT_RANGE_ERROR = 0x90010100; 
+		const uint32_t IO_INIT_FAIL = 0x100F0000; ///<Failure to initialize IO expander, port coresponds to which IO expander (1 = Alpha, 2 = Beta, 3 = Gamma)
+		const uint32_t PORT_ADC_INIT_FAIL = 0x10070000; ///<Failure to initialize port reading ADC (MCP3221) 
 		// const uint32_t TALON_PORT_RANGE_ERROR = 0x90010200; //FIX! 
 		// uint8_t sensorInterface = BusType::NONE;
 		// uint8_t talonPort = 255; //Used to keep track of which port the Talon is connected to on Kestrel
